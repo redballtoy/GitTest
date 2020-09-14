@@ -1,2 +1,32 @@
 #Домашка
-	создать от master ветку cherry-branch с файлом content.txt
+	- создать от master ветку cherry-branch с файлом content.txt
+	git checkout -b cherry-branch master
+	touch content.txt
+	
+	- внести изменения и записать коммит
+	echo 'added something' > content.txt
+	git add .
+	git commit -m 'added something to content.txt on branch cherry-branch'
+	
+	- создать ветку clear-branch от master с файлом content.txt
+	git checkout -b clear-branch master
+	touch content.txt
+	echo 'added something on clear-branch ' > content.txt
+	git add .
+	git commit -m 'added something to content.txt on branch clear-branch'
+	
+	ec740ea (HEAD -> clear-branch) added something to content.txt on branch clear-branch
+	b325149 (cherry-branch) added something to content.txt on branch cherry-branch
+	5e645de (origin/master, master) Merge branches 'dev1' and 'dev2' into master
+	1aaaf94 (dev2) dev2 add to new_feature.go
+	8fcfcff (dev1) dev1 add to new_feature.go
+	92b4ad0 (origin/cherry, cherry) test fail
+	219398a commit_01
+	6e3dcfe (origin/squash-dev, squash-dev) commit_01
+	4569443 first commit
+	
+	- перенести на ветку clear-branch коммит b325149
+	git cherry-pick b325149
+	
+	- редактируем файл content.txt для устранения конфликтов
+	- добавляеи в индекс и коммитим
